@@ -1,8 +1,12 @@
 {
-    "name": "myFirstExtension",
-    "description": "",
+    "name": "copy-python-import-path",
+    "description": "Import Python Path of Active File",
     "version": "0.0.1",
-    "publisher": "",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/openskydoor/python-import-vscode"
+    },
+    "publisher": "skylarlee",
     "engines": {
         "vscode": "^1.5.0"
     },
@@ -10,14 +14,22 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:extension.sayHello"
+        "onLanguage:python"
     ],
     "main": "./out/extension",
     "contributes": {
-        "commands": [{
-            "command": "extension.sayHello",
-            "title": "Hello World"
-        }]
+        "commands": [
+            {
+                "command": "python.copyImportPath",
+                "title": "Python: Copy Import Path"
+            }
+        ],
+        "keybindings":[
+            {
+                "command": "python.copyImportPath",
+                "key": "cmd+i cmd+p"
+            }
+        ]
     },
     "scripts": {
         "vscode:prepublish": "tsc -p ./",
@@ -26,10 +38,14 @@
         "test": "node ./node_modules/vscode/bin/test"
     },
     "devDependencies": {
-       "typescript": "^2.0.3",
-        "vscode": "^1.5.0",
-        "mocha": "^2.3.3",
+        "@types/mocha": "^2.2.32",
         "@types/node": "^6.0.40",
-        "@types/mocha": "^2.2.32"
-   }
+        "mocha": "^2.3.3",
+        "typescript": "^2.0.3",
+        "vscode": "^1.1.21"
+    },
+    "dependencies": {
+        "copy-paste": "^1.3.0",
+        "watch": "^1.0.2"
+    }
 }
